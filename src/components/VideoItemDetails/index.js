@@ -116,11 +116,28 @@ export default function VideoItemDetails() {
             <Name>{time}</Name>
           </SmallContainer>
           <SmallContainer>
-            <LikeButton onClick={()=>setLike(!isLiked)} like={isLiked? "like":""} type="button">
+            <LikeButton
+              onClick={() => {
+                setLike(!isLiked);
+                if (isDisliked) {
+                  setDislike(false);
+                }
+              }}
+              like={isLiked}
+              type="button"
+            >
               <BiLike />
               <p>Like</p>
             </LikeButton>
-            <LikeButton onClick={()=>setDislike(!isLiked)} isDislike={isLiked? "dislike": ""} type="button"
+            <LikeButton
+              onClick={() => {
+                setDislike(!isDisliked);
+                if (isLiked) {
+                  setLike(false);
+                }
+              }}
+              isDislike={isDisliked}
+              type="button"
             >
               <BiDislike />
               <p>Dislike</p>
